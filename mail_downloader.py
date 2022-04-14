@@ -1,10 +1,11 @@
 import imaplib
+import email
 
 
 
 # Log in credentials for the email account
-EMAIL = "email@email.com"
-PASSWORD = "password"
+EMAIL = ""
+PASSWORD = ""
 
 # Mail folder (inbox, sent and etc.)
 mail_box="Inbox"
@@ -27,7 +28,7 @@ _, mail_index = imap.search(None,"ALL")
 # Loop all the mails in mail_box
 for index in mail_index[0].split():
     _, mail_data = imap.fetch(index,"(RFC822)")
-    email = email.message_from_bytes(mail_data[0][1])
+    mail = email.message_from_bytes(mail_data[0][1])
 
     # Print the subject of each mail
     print(mail.get("Subject"))
